@@ -1,6 +1,9 @@
 # Procesamiento-y-Modelado-de-Datos-Logisticos-de-Olist
 Análisis logístico y geoespacial del e-commerce de Olist utilizando SQL, PostGIS y Power BI para evaluar tiempos de entrega, costos de flete y satisfacción del cliente.
 
+* **Propósito del proyecto:** [Escribe aquí una breve descripción de 2 o 3 líneas]
+* **Herramientas principales:** SQL, PostGIS y Power BI
+* **Principales resultados:** [Escribe aquí tus hallazgos clave]
 Procesamiento-y-Modelado-de-Datos-Logisticos-de-Olist
 Descripción General
 Contexto y Objetivo del Negocio
