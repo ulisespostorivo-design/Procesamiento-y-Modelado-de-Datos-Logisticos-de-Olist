@@ -3,7 +3,7 @@
 * **Herramientas principales:** SQL, PostGIS y Power BI
 
 * **Principales resultados:** 
-* **Concentración Geográfica:** São Paulo opera en una escala completamente diferente al resto del país, actuando como un gigante que acapara el volumen de la plataforma y requiere un tratamiento analítico especial para evitar sesgos en la interpretación de los datos.
+  * **Concentración Geográfica:** São Paulo opera en una escala completamente diferente al resto del país, actuando como un gigante que acapara el volumen de la plataforma y requiere un tratamiento analítico especial para evitar sesgos en la interpretación de los datos.
   * **Categorías Destacadas:** Identificación de las líneas con mayor facturación (salud y belleza, artículos para el hogar, deportes) y de productos de ticket alto, como computación.
   * **Impacto Logístico:** Demostración analítica de que los tiempos de entrega y retrasos son el factor determinante en la insatisfacción del cliente, por encima del precio o monto del producto.
   * **Análisis Temporal:** Tratamiento de picos de demanda atípicos generados durante eventos masivos como Black Friday y Cyber Monday (noviembre de 2017).
