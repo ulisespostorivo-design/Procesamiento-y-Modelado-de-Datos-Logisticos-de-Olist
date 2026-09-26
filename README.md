@@ -109,11 +109,6 @@ Entre ellas:
 
 ```sql
 ::timestamp
-```
-* Eliminación y control de registros duplicados.
-* Traducción de categorías de productos al español.
-* Creación de vistas para separar las diferentes etapas del procesamiento.
-* Preparación de datasets específicos para el análisis en Power BI.
 
 ### 2. Análisis geoespacial — PostGIS
 
@@ -125,7 +120,40 @@ Esto permitió calcular distancias entre ambos puntos y utilizarlas posteriormen
 * Costos de flete.
 * Distribución geográfica de las operaciones.
 * Relación entre distancia y tiempos de entrega.
+```
+para la conversión de campos temporales y funciones basadas en epoch para resolver registros cuyo formato original no podía utilizarse directamente.
+También se utilizó:
+```sql
+NULLIF()
+```
+para tratar valores vacíos o nulos que podían afectar las agregaciones.
 
+Las categorías de productos fueron además traducidas al español para facilitar la interpretación de los dashboards.
+
+### Control de duplicados
+
+Uno de los problemas encontrados durante la combinación de tablas fue la generación de duplicados al relacionar compradores, vendedores y transacciones.
+
+Para evitar que estos duplicados alteraran los resultados de ventas y otras métricas, se utilizaron:
+
+* Vistas intermedias.
+* Consultas separadas por entidad.
+* `DISTINCT` cuando era necesario.
+* Agregaciones realizadas antes de determinados joins.
+
+El objetivo fue mantener consistencia en los volúmenes y métricas calculadas.
+
+### Tratamiento de anomalías temporales
+
+Se identificaron picos excepcionales de transacciones asociados a **Black Friday y Cyber Monday en noviembre de 2017**.
+
+Estos eventos fueron tratados por separado para evitar que su comportamiento excepcional dominara determinados análisis temporales y dificultara la interpretación de la tendencia general.
+
+### Preparación de vistas
+
+Parte de las transformaciones se realizaron directamente en PostgreSQL mediante vistas.
+
+Esto permitió que Power BI recibiera datos previamente estructurados y redujo la necesidad de realizar transformaciones complejas directamente en el frontend.
 ### 3. Visualización — Power BI
 
 Las vistas preparadas en PostgreSQL fueron utilizadas como fuente para los dashboards de Power BI.
@@ -282,26 +310,23 @@ El repositorio está organizado de forma modular para separar los datos, las tra
 
 **SQL / PostgreSQL**
 
-* Limpieza y transformación de datos.
-* Manejo de valores nulos.
-* Conversión y tratamiento de fechas.
-* Joins entre múltiples entidades.
-* Control de duplicados.
-* Creación de vistas.
-* Preparación de datos para herramientas de BI.
+* Limpieza y transformación de datos en entornos reales.
+* Tratamiento de nulos y valores vacíos con `NULLIF`.
+* Conversión y tipado de fechas (`::timestamp` y funciones basadas en epoch).
+* Diseño de joins multi-tabla con control de fan-out y duplicados.
+* Creación de vistas intermedias para garantizar consistencia de métricas.
+* Preparación de datasets optimizados para herramientas de BI.
 
 **PostGIS**
 
-* Trabajo con datos geográficos.
-* Cálculo de distancias.
-* Integración de información espacial con datos logísticos.
+* Manejo de coordenadas geográficas.
+* Cálculo de distancias entre compradores y vendedores.
+* Integración de la dimensión espacial en el análisis de costos de flete y tiempos de entrega.
 
 **Power BI**
 
-* Diseño de dashboards.
-* Jerarquía visual.
-* Ordenamiento personalizado.
-* Escalas logarítmicas.
-* Formato condicional.
-* Análisis de indicadores comerciales y logísticos.
-
+* Diseño de dashboards con jerarquía visual y enfoque minimalista.
+* Ordenamiento personalizado por volumen de operaciones.
+* Uso de escalas logarítmicas para manejar grandes diferencias de magnitud.
+* Formato condicional basado en precio unitario.
+* Análisis integrado de indicadores comerciales, logísticos y de satisfacción del cliente.
