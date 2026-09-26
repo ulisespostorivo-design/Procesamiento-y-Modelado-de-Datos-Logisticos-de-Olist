@@ -19,6 +19,8 @@ El proyecto incluye:
 * Análisis de costos de flete y tiempos de entrega.
 * Desarrollo de dashboards interactivos en **Power BI**.
 
+![Mapa de Brasil](04_assets/Mapa%20de%20Brasil.png)
+
 ## 🛠️ Tecnologías Utilizadas
 
 | Tecnología | Uso |
@@ -162,6 +164,8 @@ Estas distancias fueron posteriormente utilizadas para analizar:
 
 Esto permitió incorporar una dimensión espacial al análisis comercial y logístico.
 
+![Logística por distancias](04_assets/Logistica%20por%20distancias.png)
+
 ---
 
 ## 📊 Power BI — Visualización y Dashboards
@@ -193,6 +197,8 @@ Se implementó coloración dinámica basada en el precio unitario de los product
 São Paulo concentra un volumen de operaciones muy superior al de otras regiones del dataset.
 
 Esta diferencia de escala debe tenerse en cuenta al analizar visualmente el resto de los estados, ya que puede ocultar variaciones de menor magnitud.
+
+![Comparativa de Brasil](04_assets/Comparativa%20de%20Brasiljpg)
 
 ### Categorías con mayor facturación
 
