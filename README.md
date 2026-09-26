@@ -1,17 +1,21 @@
+# 📦 Procesamiento y Modelado de Datos Logísticos de Olist
+
+> Análisis logístico y geoespacial del e-commerce de Olist utilizando SQL, PostGIS y Power BI para evaluar tiempos de entrega, costos de flete y satisfacción del cliente.
+
 * **Propósito del proyecto:** Desarrollo de un análisis integral de la cadena de suministro de Olist utilizando SQL, PostGIS y Power BI para evaluar el rendimiento logístico, los tiempos de entrega y la distribución geográfica de los envíos.
 
-* **Herramientas principales:** SQL, PostGIS y Power BI
+* **Herramientas principales:** 🛠️ SQL, 🌍 PostGIS y 📊 Power BI
 
-* **Principales resultados:** 
-  * **Concentración Geográfica:** São Paulo opera en una escala completamente diferente al resto del país, actuando como un gigante que acapara el volumen de la plataforma y requiere un tratamiento analítico especial para evitar sesgos en la interpretación de los datos.
-  * **Categorías Destacadas:** Identificación de las líneas con mayor facturación (salud y belleza, artículos para el hogar, deportes) y de productos de ticket alto, como computación.
-  * **Impacto Logístico:** Demostración analítica de que los tiempos de entrega y retrasos son el factor determinante en la insatisfacción del cliente, por encima del precio o monto del producto.
+* **Principales resultados:**  
+  * **Concentración Geográfica:** São Paulo opera en una escala completamente diferente al resto del país, actuando como un gigante que acapara el volumen de la plataforma y requiere un tratamiento analítico especial para evitar sesgos en la interpretación de los datos.  
+  * **Categorías Destacadas:** Identificación de las líneas con mayor facturación (salud y belleza, artículos para el hogar, deportes) y de productos de ticket alto, como computación.  
+  * **Impacto Logístico:** Demostración analítica de que los tiempos de entrega y retrasos son el factor determinante en la insatisfacción del cliente, por encima del precio o monto del producto.  
   * **Análisis Temporal:** Tratamiento de picos de demanda atípicos generados durante eventos masivos como Black Friday y Cyber Monday (noviembre de 2017).
 
-* **Competencias Técnicas Demostradas:**
-  * Limpieza y procesamiento de datos (manejo de registros nulos y duplicados) mediante consultas SQL.
-  * Creación y optimización de tableros de visualización de datos, implementando escalas logarítmicas y jerarquías visuales basadas en volumen de ventas.
-
+* **Competencias Técnicas Demostradas:**  
+  * ⚙️ Limpieza y procesamiento de datos (manejo de registros nulos y duplicados) mediante consultas SQL.  
+  * 📈 Creación y optimización de tableros de visualización de datos, implementando escalas logarítmicas y jerarquías visuales basadas en volumen de ventas.
+  
 ## 📌 Descripción General
 Este proyecto presenta un análisis integral de la cadena de suministro y el rendimiento comercial de **Olist**, un marketplace de comercio electrónico en Brasil. El desarrollo abarca un pipeline técnico completo: desde la ingesta, traducción y limpieza masiva de datos en **SQL** —gestionando valores nulos, duplicados y anomalías temporales como el impacto de eventos masivos— hasta la implementación de análisis geoespacial avanzado con **PostGIS** para calcular distancias de envío reales. Finalmente, toda la información se consolida en un panel ejecutivo minimalista en **Power BI**, optimizado para la experiencia de usuario, el análisis de rentabilidad y la toma de decisiones.
 
