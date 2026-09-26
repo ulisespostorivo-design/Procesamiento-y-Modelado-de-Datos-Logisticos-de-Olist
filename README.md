@@ -198,7 +198,7 @@ São Paulo concentra un volumen de operaciones muy superior al de otras regiones
 
 Esta diferencia de escala debe tenerse en cuenta al analizar visualmente el resto de los estados, ya que puede ocultar variaciones de menor magnitud.
 
-![Comparativa de Brasil](04_assets/Comparativa%20de%20Brasiljpg)
+![Comparativa de Brasil](04_assets/Comparativa%20de%20Brasil.jpg)
 
 ### Categorías con mayor facturación
 
