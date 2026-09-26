@@ -26,7 +26,6 @@ El proyecto incluye:
 | **PostgreSQL** | Almacenamiento, limpieza, transformación y modelado de datos mediante SQL |
 | **PostGIS** | Cálculo y análisis de distancias geográficas |
 | **Power BI** | Visualización, exploración y análisis de resultados |
-
 ---
 
 ## 🎯 Contexto y Objetivo de Negocio
