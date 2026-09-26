@@ -1,18 +1,18 @@
 # 📦 Procesamiento y Modelado de Datos Logísticos de Olist
 
-> Análisis logístico y geoespacial de un marketplace de e-commerce en Brasil utilizando **PostgreSQL, SQL, PostGIS y Power BI** para estudiar tiempos de entrega, costos de flete, distribución geográfica y satisfacción del cliente.
+> Análisis logístico y geoespacial de un marketplace de comercio electrónico en Brasil utilizando **PostgreSQL, PostGIS y Power BI** para estudiar tiempos de entrega, costos de flete, distribución geográfica y satisfacción del cliente.
 
 ---
 
 ## 📌 Resumen del Proyecto
 
-Proyecto de análisis de datos basado en el dataset público de **Olist**, un marketplace de comercio electrónico de Brasil ([dataset original en Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)).
+Este proyecto utiliza el dataset público de **Olist**, un marketplace de comercio electrónico de Brasil ([dataset original en Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)).
 
-El objetivo fue analizar el rendimiento comercial y logístico de la plataforma, desde la preparación de los datos hasta la visualización de resultados en Power BI.
+El objetivo fue analizar el rendimiento logístico de la plataforma, desde la preparación y transformación de los datos hasta la visualización de resultados en Power BI.
 
 El proyecto incluye:
 
-* Limpieza y transformación de datos mediante **SQL / PostgreSQL**.
+* Limpieza y transformación de datos mediante **PostgreSQL**.
 * Tratamiento de valores nulos, duplicados y problemas de formato.
 * Análisis de fechas y comportamiento temporal.
 * Cálculo de distancias entre compradores y vendedores mediante **PostGIS**.
@@ -23,12 +23,11 @@ El proyecto incluye:
 
 ## 🛠️ Tecnologías Utilizadas
 
-| Tecnología     | Uso                                                                       |
-| -------------- | ------------------------------------------------------------------------- |
-| **PostgreSQL** | Almacenamiento, limpieza, transformación y modelado de datos mediante SQL |
-| **PostGIS**    | Cálculo y análisis de distancias geográficas                              |
-| **Power BI**   | Visualización, exploración y análisis de resultados                       |
-
+| Tecnología     | Uso                                                                    |
+| -------------- | ---------------------------------------------------------------------- |
+| **PostgreSQL** | Almacenamiento, limpieza, transformación y modelado de datos          |
+| **PostGIS**    | Cálculo de distancias y análisis espacial                              |
+| **Power BI**   | Visualización, exploración y comunicación de resultados                |
 ---
 
 ## 🎯 Contexto y Objetivo de Negocio
@@ -38,21 +37,21 @@ El análisis se centró en tres áreas principales:
 **Rendimiento comercial**
 
 * Facturación por categoría.
-* Distribución de ventas.
-* Identificación de productos y categorías de mayor valor.
+* Distribución de las ventas por categoría y período.
+* Identificación de las categorías con mayor facturación.
 
 **Rendimiento logístico**
 
 * Tiempos de entrega.
 * Retrasos respecto a la fecha estimada.
-* Relación entre distancia y costo de flete.
+* Relación entre distancia recorrida y costo de flete.
 
 **Satisfacción del cliente**
 
 * Relación entre retrasos y calificaciones.
-* Comportamiento de las valoraciones frente al cumplimiento de las fechas de entrega.
+* Variación de las valoraciones según el cumplimiento de la fecha estimada de entrega.
 
-El objetivo fue transformar los datos originales en información estructurada que permitiera explorar estos indicadores de forma consistente.
+El objetivo fue analizar el desempeño logístico de la plataforma y explorar su relación con la satisfacción del cliente, utilizando indicadores comerciales, temporales y geográficos para obtener una visión integral de la operación.
 
 ---
 
