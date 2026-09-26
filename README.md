@@ -269,13 +269,14 @@ Estos valores fueron aislados en determinados análisis para evitar que alterara
 
 El repositorio está organizado de forma modular para separar los datos, las transformaciones y la visualización.
 
-text
+```text
 📦 Procesamiento-y-Modelado-de-Datos-Logisticos-de-Olist
  ┣ 📂 01_data/          # Datasets originales y tablas auxiliares normalizadas (CSV)
  ┣ 📂 02_sql/           # Scripts de creación de vistas, limpieza de nulos y consultas PostGIS
  ┣ 📂 03_dashboards/    # Archivos del reporte y tableros interactivos (Power BI)
  ┣ 📂 04_assets/        # Capturas de pantalla e imágenes clave del panel
  ┗ 📜 README.md         # Documentación técnica y caso de estudio completo
+```
 
 ## 🔎 Competencias Demostradas
 
