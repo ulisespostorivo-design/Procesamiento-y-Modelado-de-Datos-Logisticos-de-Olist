@@ -21,12 +21,11 @@ El proyecto incluye:
 
 ## 🛠️ Tecnologías Utilizadas
 
-| Tecnología     | Uso                                                                |
-| -------------- | ------------------------------------------------------------------ |
-| **PostgreSQL** | Almacenamiento, transformación y preparación de datos              |
-| **SQL**        | Limpieza, transformación, joins, agregaciones y creación de vistas |
-| **PostGIS**    | Cálculo y análisis de distancias geográficas                       |
-| **Power BI**   | Visualización, exploración e interpretación de resultados          |
+| Tecnología | Uso |
+|---|---|
+| **PostgreSQL** | Almacenamiento, limpieza, transformación y modelado de datos mediante SQL |
+| **PostGIS** | Cálculo y análisis de distancias geográficas |
+| **Power BI** | Visualización, exploración y análisis de resultados |
 
 ---
 
