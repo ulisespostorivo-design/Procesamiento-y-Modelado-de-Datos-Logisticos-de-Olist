@@ -107,8 +107,9 @@ Se realizaron transformaciones para adaptar los datos originales al modelo anal�
 
 Entre ellas:
 
-sql
+```sql
 ::timestamp
+```
 * Eliminación y control de registros duplicados.
 * Traducción de categorías de productos al español.
 * Creación de vistas para separar las diferentes etapas del procesamiento.
