@@ -6,7 +6,7 @@
 
 ## 📌 Resumen del Proyecto
 
-Proyecto de análisis de datos basado en el dataset público de **Olist**, un marketplace de comercio electrónico de Brasil.
+Proyecto de análisis de datos basado en el dataset público de **Olist**, un marketplace de comercio electrónico de Brasil ([dataset original en Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)).
 
 El objetivo fue analizar el rendimiento comercial y logístico de la plataforma, desde la preparación de los datos hasta la visualización de resultados en Power BI.
 
@@ -23,11 +23,12 @@ El proyecto incluye:
 
 ## 🛠️ Tecnologías Utilizadas
 
-| Tecnología | Uso |
-|---|---|
+| Tecnología     | Uso                                                                       |
+| -------------- | ------------------------------------------------------------------------- |
 | **PostgreSQL** | Almacenamiento, limpieza, transformación y modelado de datos mediante SQL |
-| **PostGIS** | Cálculo y análisis de distancias geográficas |
-| **Power BI** | Visualización, exploración y análisis de resultados |
+| **PostGIS**    | Cálculo y análisis de distancias geográficas                              |
+| **Power BI**   | Visualización, exploración y análisis de resultados                       |
+
 ---
 
 ## 🎯 Contexto y Objetivo de Negocio
@@ -67,6 +68,47 @@ Entre los principales tratamientos realizados:
 
 * Conversión y tipado de campos temporales.
 * Tratamiento de valores vacíos y nulos mediante `NULLIF`.
+* Eliminación y control de registros duplicados.
+* Traducción de categorías de productos al español.
+* Creación de vistas para separar las diferentes etapas del procesamiento.
+* Preparación de datasets específicos para el análisis en Power BI.
+
+### 2. Análisis geoespacial — PostGIS
+
+Se incorporó **PostGIS** para trabajar con las coordenadas geográficas de compradores y vendedores.
+
+Esto permitió calcular distancias entre ambos puntos y utilizarlas posteriormente para analizar:
+
+* Distancia de los envíos.
+* Costos de flete.
+* Distribución geográfica de las operaciones.
+* Relación entre distancia y tiempos de entrega.
+
+### 3. Visualización — Power BI
+
+Las vistas preparadas en PostgreSQL fueron utilizadas como fuente para los dashboards de Power BI.
+
+El diseño priorizó:
+
+* Lectura rápida de los principales indicadores.
+* Jerarquía visual.
+* Reducción de elementos innecesarios.
+* Ordenamiento de categorías y regiones según volumen.
+* Uso de escalas logarítmicas cuando las diferencias de magnitud dificultaban la comparación.
+* Coloración condicionada para facilitar la interpretación de determinadas métricas.
+
+---
+
+## ⚙️ Procesamiento y Modelado de Datos
+
+### Normalización y tipado
+
+Se realizaron transformaciones para adaptar los datos originales al modelo analítico.
+
+Entre ellas:
+
+sql
+::timestamp
 * Eliminación y control de registros duplicados.
 * Traducción de categorías de productos al español.
 * Creación de vistas para separar las diferentes etapas del procesamiento.
@@ -212,6 +254,8 @@ El análisis de las calificaciones mostró una relación marcada entre los retra
 
 Cuando el pedido cumple con la fecha prevista, pequeñas diferencias adicionales en el tiempo de transporte presentan un efecto menor sobre las calificaciones que los retrasos respecto a la fecha estimada.
 
+**Implicación:** la precisión de la promesa de entrega tiene mayor impacto en la satisfacción del cliente que la distancia o el tiempo de transporte en sí.
+
 ### Comportamiento temporal
 
 Los eventos de **Black Friday y Cyber Monday** generaron picos excepcionales de actividad durante noviembre de 2017.
@@ -224,16 +268,13 @@ Estos valores fueron aislados en determinados análisis para evitar que alterara
 
 El repositorio está organizado de forma modular para separar los datos, las transformaciones y la visualización.
 
-```text
-📦 olist-ecommerce-analytics
- ┣ 📂 data/                 # Datasets originales y tablas auxiliares normalizadas (CSV)
- ┣ 📂 sql/                  # Scripts de creación de vistas, limpieza de nulos y consultas PostGIS
- ┣ 📂 dashboards/           # Archivos del reporte y tableros interactivos (Power BI)
- ┣ 📂 assets/               # Capturas de pantalla e imágenes clave del panel
- ┗ 📜 README.md             # Documentación técnica y caso de estudio completo
-```
-
----
+text
+📦 Procesamiento-y-Modelado-de-Datos-Logisticos-de-Olist
+ ┣ 📂 01_data/          # Datasets originales y tablas auxiliares normalizadas (CSV)
+ ┣ 📂 02_sql/           # Scripts de creación de vistas, limpieza de nulos y consultas PostGIS
+ ┣ 📂 03_dashboards/    # Archivos del reporte y tableros interactivos (Power BI)
+ ┣ 📂 04_assets/        # Capturas de pantalla e imágenes clave del panel
+ ┗ 📜 README.md         # Documentación técnica y caso de estudio completo
 
 ## 🔎 Competencias Demostradas
 
