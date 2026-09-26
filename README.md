@@ -109,7 +109,7 @@ Entre ellas:
 
 ```sql
 ::timestamp
-
+```
 ### 2. Análisis geoespacial — PostGIS
 
 Se incorporó **PostGIS** para trabajar con las coordenadas geográficas de compradores y vendedores.
@@ -120,7 +120,7 @@ Esto permitió calcular distancias entre ambos puntos y utilizarlas posteriormen
 * Costos de flete.
 * Distribución geográfica de las operaciones.
 * Relación entre distancia y tiempos de entrega.
-```
+
 para la conversión de campos temporales y funciones basadas en epoch para resolver registros cuyo formato original no podía utilizarse directamente.
 También se utilizó:
 ```sql
