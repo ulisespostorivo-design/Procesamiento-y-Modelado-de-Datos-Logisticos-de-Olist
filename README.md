@@ -1,81 +1,224 @@
 # 📦 Procesamiento y Modelado de Datos Logísticos de Olist
 
-> Análisis logístico y geoespacial del e-commerce de Olist utilizando SQL, PostGIS y Power BI para evaluar tiempos de entrega, costos de flete y satisfacción del cliente.
+> Análisis logístico y geoespacial de un marketplace de e-commerce en Brasil utilizando **PostgreSQL, SQL, PostGIS y Power BI** para estudiar tiempos de entrega, costos de flete, distribución geográfica y satisfacción del cliente.
 
-* **Propósito del proyecto:** Desarrollo de un análisis integral de la cadena de suministro de Olist utilizando SQL, PostGIS y Power BI para evaluar el rendimiento logístico, los tiempos de entrega y la distribución geográfica de los envíos.
+---
 
-* **Herramientas principales:** 🛠️ SQL, 🌍 PostGIS y 📊 Power BI
+## 📌 Resumen del Proyecto
 
-* **Principales resultados:**  
-  * **Concentración Geográfica:** São Paulo opera en una escala completamente diferente al resto del país, actuando como un gigante que acapara el volumen de la plataforma y requiere un tratamiento analítico especial para evitar sesgos en la interpretación de los datos.  
-  * **Categorías Destacadas:** Identificación de las líneas con mayor facturación (salud y belleza, artículos para el hogar, deportes) y de productos de ticket alto, como computación.  
-  * **Impacto Logístico:** Demostración analítica de que los tiempos de entrega y retrasos son el factor determinante en la insatisfacción del cliente, por encima del precio o monto del producto.  
-  * **Análisis Temporal:** Tratamiento de picos de demanda atípicos generados durante eventos masivos como Black Friday y Cyber Monday (noviembre de 2017).
+Proyecto de análisis de datos basado en el dataset público de **Olist**, un marketplace de comercio electrónico de Brasil.
 
-* **Competencias Técnicas Demostradas:**  
-  * ⚙️ Limpieza y procesamiento de datos (manejo de registros nulos y duplicados) mediante consultas SQL.  
-  * 📈 Creación y optimización de tableros de visualización de datos, implementando escalas logarítmicas y jerarquías visuales basadas en volumen de ventas.
-  
-## 📌 Descripción General
-Este proyecto presenta un análisis integral de la cadena de suministro y el rendimiento comercial de **Olist**, un marketplace de comercio electrónico en Brasil. El desarrollo abarca un pipeline técnico completo: desde la ingesta, traducción y limpieza masiva de datos en **SQL** —gestionando valores nulos, duplicados y anomalías temporales como el impacto de eventos masivos— hasta la implementación de análisis geoespacial avanzado con **PostGIS** para calcular distancias de envío reales. Finalmente, toda la información se consolida en un panel ejecutivo minimalista en **Power BI**, optimizado para la experiencia de usuario, el análisis de rentabilidad y la toma de decisiones.
+El objetivo fue analizar el rendimiento comercial y logístico de la plataforma, desde la preparación de los datos hasta la visualización de resultados en Power BI.
 
-## 🎯 Contexto y Objetivo del Negocio
-El proyecto se centra en el análisis integral del ecosistema de **Olist**, un marketplace de comercio electrónico en Brasil. Su objetivo principal consistió en auditar la cadena de suministro, evaluar el rendimiento logístico, los tiempos de entrega y la rentabilidad de las categorías, examinando cómo los retrasos impactan de forma directa en la satisfacción del cliente y resolviendo sesgos de concentración geográfica mediante métricas precisas.
+El proyecto incluye:
 
-## 🏗️ Arquitectura, Flujo de Datos y Herramientas Utilizadas
-El pipeline analítico de Olist se estructuró de manera modular para transformar datos masivos y crudos en información lista para la toma de decisiones ejecutivas, integrando herramientas especializadas en cada etapa:
+* Limpieza y transformación de datos mediante **SQL / PostgreSQL**.
+* Tratamiento de valores nulos, duplicados y problemas de formato.
+* Análisis de fechas y comportamiento temporal.
+* Cálculo de distancias entre compradores y vendedores mediante **PostGIS**.
+* Análisis de costos de flete y tiempos de entrega.
+* Desarrollo de dashboards interactivos en **Power BI**.
 
-* **Ingesta y Limpieza de Datos (SQL / PostgreSQL):** 
-  * Se gestionó la carga inicial de los archivos, traduciendo las categorías al español para mejorar la legibilidad.
-  * Se implementaron vistas estratégicas y técnicas de limpieza masiva para tratar valores nulos mediante `NULLIF`, corregir errores de formato en fechas utilizando `epoch` y `::timestamp`, y eliminar registros duplicados y anomalías temporales críticas (como el impacto distorsivo del Black Friday y Cyber Monday). Esto permitió entregar los datos ya procesados y "masticados" al frontend.
+## 🛠️ Tecnologías Utilizadas
 
-* **Procesamiento Geoespacial (PostGIS):** 
-  * Se integró la extensión PostGIS en PostgreSQL (un requisito técnico indispensable) para calcular distancias geodésicas reales y exactas entre compradores y vendedores. Esto superó las limitaciones de agrupar únicamente por estados o ciudades, logrando una precisión quirúrgica en el estudio de costos de flete por kilómetro y tiempos de entrega.
+| Tecnología     | Uso                                                                |
+| -------------- | ------------------------------------------------------------------ |
+| **PostgreSQL** | Almacenamiento, transformación y preparación de datos              |
+| **SQL**        | Limpieza, transformación, joins, agregaciones y creación de vistas |
+| **PostGIS**    | Cálculo y análisis de distancias geográficas                       |
+| **Power BI**   | Visualización, exploración e interpretación de resultados          |
 
-* **Capa de Visualización y Análisis (Power BI):** 
-  * Se conectó directamente a las vistas SQL optimizadas para evitar la duplicación y sobrecarga de datos en el frontend.
-  * Se diseñaron paneles bajo un estricto enfoque de minimalismo visual, incorporando escalas logarítmicas para mitigar el sesgo masivo de concentración en São Paulo, ordenamientos personalizados por volumen real de ventas y coloración dinámica condicionada por los precios de los artículos.
+---
 
-## ⚙️ Ingeniería y Procesamiento de Datos (SQL)
-La capa de procesamiento en PostgreSQL se diseñó para transformar datos masivos y crudos en un modelo relacional limpio, estructurado y optimizado mediante vistas estratégicas:
+## 🎯 Contexto y Objetivo de Negocio
 
-* **Normalización y Tipado de Datos:** 
-  * Se corrigieron errores de conversión mediante el uso de `::timestamp` y funciones basadas en `epoch` para procesar correctamente campos temporales originalmente almacenados como texto.
-  * Se implementó `NULLIF` de forma sistemática para neutralizar celdas vacías o nulas que alteraban las consultas de agregación.
-  * Se integraron traducciones al español para las categorías de productos, estandarizando la legibilidad del modelo.
+El análisis se centró en tres áreas principales:
 
-* **Control Riguroso de Duplicados en Joins:** 
-  * Al cruzar entidades complejas (compradores, vendedores y transacciones), se mitigaron problemas de duplicación de registros. Se rediseñaron las consultas mediante vistas aisladas y el uso selectivo de `DISTINCT`, previniendo la alteración de volúmenes de venta reales y garantizando métricas financieras coherentes.
+**Rendimiento comercial**
 
-* **Neutralización de Anomalías Temporales ("Datos Envenenados"):** 
-  * Se identificó que los picos de transacciones del Black Friday y el Cyber Monday distorsionaban severamente las tendencias de la serie temporal. Se aislaron y filtraron estas ventanas críticas para neutralizar el sesgo de marketing masivo y establecer una línea base analítica confiable.
+* Facturación por categoría.
+* Distribución de ventas.
+* Identificación de productos y categorías de mayor valor.
 
-* **Optimización de Vistas ("Datos Masticados"):** 
-  * Se evitaron transformaciones pesadas en el frontend estructurando consultas SQL modulares. Esto permitió alimentar las herramientas de visualización con datos pre-procesados, reduciendo la sobrecarga de procesamiento y optimizando el rendimiento de los paneles.
+**Rendimiento logístico**
 
-## 📍 Análisis Geoespacial (PostGIS)
-El análisis logístico trascendió la simple agrupación administrativa por estados o ciudades mediante la integración de la extensión **PostGIS** en PostgreSQL. Esta implementación permitió calcular distancias geodésicas reales entre las coordenadas de los compradores y los vendedores.
+* Tiempos de entrega.
+* Retrasos respecto a la fecha estimada.
+* Relación entre distancia y costo de flete.
 
-* **Cálculo de Distancias Reales:** Se procesaron las tablas de geolocalización para medir distancias kilométricas exactas, permitiendo evaluar el comportamiento real de los envíos en lugar de estimaciones teóricas por región.
-* **Optimización Logística y Costos de Flete:** Al cruzar las distancias geodésicas con los costos de transporte, se logró un análisis quirúrgico de la eficiencia de la cadena de suministro, identificando con precisión cómo la distancia impacta en los márgenes y en la rentabilidad de las entregas.
+**Satisfacción del cliente**
 
-## 📊 Visualización y Tableros (Power BI)
-La capa de visualización se estructuró bajo una filosofía de diseño minimalista y ejecutiva, conectándose directamente a las vistas SQL preprocesadas ("datos masticados") para garantizar un rendimiento fluido del panel y evitar duplicaciones de datos en el frontend.
+* Relación entre retrasos y calificaciones.
+* Comportamiento de las valoraciones frente al cumplimiento de las fechas de entrega.
 
-* **Minimalismo y Optimización de la Interfaz:** Se eliminó la saturación de elementos visuales, priorizando espacios limpios y centrados para reducir la fatiga del usuario y enfocar la atención en las métricas verdaderamente relevantes del negocio.
-* **Ordenamiento Personalizado por Volumen de Ventas:** Se superó la limitación del orden alfabético predeterminado (que posicionaba erróneamente a regiones con mínima actividad, como Acre o Amazonas, por encima de los mercados principales) reconfigurando los segmentadores en función del volumen real de transacciones, destacando primero a plazas clave como São Paulo.
-* **Escalas Logarítmicas para Neutralizar Sesgos:** Se implementaron escalas logarítmicas en los componentes gráficos y cartográficos para mitigar el sesgo visual provocado por la monstruosa concentración transaccional de São Paulo, permitiendo auditar con equidad el rendimiento de los demás estados.
-* **Coloración Dinámica Condicionada por Precios:** Se estableció un esquema de colores funcionales basado en el precio unitario de los artículos: tonos rojos para productos de bajo valor (que exigen alta rotación para generar margen), amarillos para el promedio del mercado y verdes para aquellos con mayor retorno por unidad.
+El objetivo fue transformar los datos originales en información estructurada que permitiera explorar estos indicadores de forma consistente.
 
-## 💡 Hallazgos e Insights Principales
-El análisis de los datos permitió extraer conclusiones críticas sobre la dinámica logística y el comportamiento del consumidor en el marketplace:
+---
 
-* **Neutralización de Anomalías Estacionales (Black Friday y Cyber Monday):** Se detectó que los picos masivos de transacciones en estas fechas clave distorsionaban severamente no solo sus meses de ocurrencia, sino toda la serie temporal. Aislar y filtrar una ventana crítica de apenas 3 días permitió estabilizar la línea base analítica y evitar sesgos masivos de marketing en los tableros.
-* **Prioridad Absoluta del Tiempo de Despacho sobre el Precio:** El análisis demostró que el precio o valor monetario del producto casi no influye en la satisfacción final del usuario (ya que al momento de la compra se asume el costo con absoluta certeza); el factor determinante y analítico real es la eficiencia en el cumplimiento del despacho frente a una fecha estimada.
-* **Deterioro Crítico de la Reputación por Retrasos:** Al auditar el sistema de calificaciones de los clientes, se identificó que las puntuaciones caen de forma drástica y abrupta a medida que aumentan los días de retraso en las entregas. En contraste, si el pedido cumple con los plazos previstos, las variaciones menores en la velocidad de transporte no alteran negativamente la percepción del comprador.
+## 🏗️ Flujo de Datos
+
+El proyecto se estructuró en tres etapas principales:
+
+### 1. Ingesta y preparación — PostgreSQL / SQL
+
+Los datos originales fueron cargados en PostgreSQL y posteriormente transformados mediante consultas SQL.
+
+Entre los principales tratamientos realizados:
+
+* Conversión y tipado de campos temporales.
+* Tratamiento de valores vacíos y nulos mediante `NULLIF`.
+* Eliminación y control de registros duplicados.
+* Traducción de categorías de productos al español.
+* Creación de vistas para separar las diferentes etapas del procesamiento.
+* Preparación de datasets específicos para el análisis en Power BI.
+
+### 2. Análisis geoespacial — PostGIS
+
+Se incorporó **PostGIS** para trabajar con las coordenadas geográficas de compradores y vendedores.
+
+Esto permitió calcular distancias entre ambos puntos y utilizarlas posteriormente para analizar:
+
+* Distancia de los envíos.
+* Costos de flete.
+* Distribución geográfica de las operaciones.
+* Relación entre distancia y tiempos de entrega.
+
+### 3. Visualización — Power BI
+
+Las vistas preparadas en PostgreSQL fueron utilizadas como fuente para los dashboards de Power BI.
+
+El diseño priorizó:
+
+* Lectura rápida de los principales indicadores.
+* Jerarquía visual.
+* Reducción de elementos innecesarios.
+* Ordenamiento de categorías y regiones según volumen.
+* Uso de escalas logarítmicas cuando las diferencias de magnitud dificultaban la comparación.
+* Coloración condicionada para facilitar la interpretación de determinadas métricas.
+
+---
+
+## ⚙️ Procesamiento y Modelado de Datos
+
+### Normalización y tipado
+
+Se realizaron transformaciones para adaptar los datos originales al modelo analítico.
+
+Entre ellas:
+
+```sql
+::timestamp
+```
+
+para la conversión de campos temporales y funciones basadas en `epoch` para resolver registros cuyo formato original no podía utilizarse directamente.
+
+También se utilizó:
+
+```sql
+NULLIF()
+```
+
+para tratar valores vacíos o nulos que podían afectar las agregaciones.
+
+Las categorías de productos fueron además traducidas al español para facilitar la interpretación de los dashboards.
+
+### Control de duplicados
+
+Uno de los problemas encontrados durante la combinación de tablas fue la generación de duplicados al relacionar compradores, vendedores y transacciones.
+
+Para evitar que estos duplicados alteraran los resultados de ventas y otras métricas, se utilizaron:
+
+* Vistas intermedias.
+* Consultas separadas por entidad.
+* `DISTINCT` cuando era necesario.
+* Agregaciones realizadas antes de determinados joins.
+
+El objetivo fue mantener consistencia en los volúmenes y métricas calculadas.
+
+### Tratamiento de anomalías temporales
+
+Se identificaron picos excepcionales de transacciones asociados a **Black Friday y Cyber Monday en noviembre de 2017**.
+
+Estos eventos fueron tratados por separado para evitar que su comportamiento excepcional dominara determinados análisis temporales y dificultara la interpretación de la tendencia general.
+
+### Preparación de vistas
+
+Parte de las transformaciones se realizaron directamente en PostgreSQL mediante vistas.
+
+Esto permitió que Power BI recibiera datos previamente estructurados y redujo la necesidad de realizar transformaciones complejas directamente en el frontend.
+
+---
+
+## 📍 Análisis Geoespacial con PostGIS
+
+El componente geoespacial permitió ir más allá de una agrupación por estado o ciudad.
+
+A partir de las coordenadas disponibles en los datos, se calcularon distancias entre compradores y vendedores mediante **PostGIS**.
+
+Estas distancias fueron posteriormente utilizadas para analizar:
+
+* Kilómetros recorridos por los envíos.
+* Distribución geográfica de las operaciones.
+* Costos de flete.
+* Relación entre distancia y logística de entrega.
+
+Esto permitió incorporar una dimensión espacial al análisis comercial y logístico.
+
+---
+
+## 📊 Power BI — Visualización y Dashboards
+
+El dashboard fue diseñado con un enfoque minimalista, priorizando la lectura de los indicadores principales.
+
+### Ordenamiento por volumen
+
+Los segmentadores y categorías fueron ordenados utilizando el volumen de operaciones en lugar del orden alfabético.
+
+Esto permite que las regiones con mayor actividad aparezcan primero y facilita la exploración de los mercados principales.
+
+### Escalas logarítmicas
+
+La distribución geográfica presenta diferencias de magnitud muy grandes, especialmente por la concentración de operaciones en **São Paulo**.
+
+Para determinados gráficos y componentes se utilizaron escalas logarítmicas para permitir una comparación más útil entre regiones con volúmenes muy diferentes.
+
+### Coloración condicionada
+
+Se implementó coloración dinámica basada en el precio unitario de los productos para facilitar la identificación visual de diferentes rangos de valor.
+
+---
+
+## 💡 Principales Hallazgos
+
+### Concentración geográfica
+
+São Paulo concentra un volumen de operaciones muy superior al de otras regiones del dataset.
+
+Esta diferencia de escala debe tenerse en cuenta al analizar visualmente el resto de los estados, ya que puede ocultar variaciones de menor magnitud.
+
+### Categorías con mayor facturación
+
+El análisis identificó a **salud y belleza, artículos para el hogar y deportes** entre las categorías con mayor facturación.
+
+También se observaron productos de mayor valor unitario en categorías como **computación**.
+
+### Entregas y satisfacción
+
+El análisis de las calificaciones mostró una relación marcada entre los retrasos de entrega y una menor valoración del pedido.
+
+Cuando el pedido cumple con la fecha prevista, pequeñas diferencias adicionales en el tiempo de transporte presentan un efecto menor sobre las calificaciones que los retrasos respecto a la fecha estimada.
+
+### Comportamiento temporal
+
+Los eventos de **Black Friday y Cyber Monday** generaron picos excepcionales de actividad durante noviembre de 2017.
+
+Estos valores fueron aislados en determinados análisis para evitar que alteraran la interpretación de la tendencia habitual.
+
+---
 
 ## 📁 Estructura del Repositorio
-El proyecto se encuentra organizado de forma modular para facilitar su auditoría, revisión técnica y replicación:
+
+El repositorio está organizado de forma modular para separar los datos, las transformaciones y la visualización.
 
 ```text
 📦 olist-ecommerce-analytics
@@ -84,3 +227,34 @@ El proyecto se encuentra organizado de forma modular para facilitar su auditorí
  ┣ 📂 dashboards/           # Archivos del reporte y tableros interactivos (Power BI)
  ┣ 📂 assets/               # Capturas de pantalla e imágenes clave del panel
  ┗ 📜 README.md             # Documentación técnica y caso de estudio completo
+```
+
+---
+
+## 🔎 Competencias Demostradas
+
+**SQL / PostgreSQL**
+
+* Limpieza y transformación de datos.
+* Manejo de valores nulos.
+* Conversión y tratamiento de fechas.
+* Joins entre múltiples entidades.
+* Control de duplicados.
+* Creación de vistas.
+* Preparación de datos para herramientas de BI.
+
+**PostGIS**
+
+* Trabajo con datos geográficos.
+* Cálculo de distancias.
+* Integración de información espacial con datos logísticos.
+
+**Power BI**
+
+* Diseño de dashboards.
+* Jerarquía visual.
+* Ordenamiento personalizado.
+* Escalas logarítmicas.
+* Formato condicional.
+* Análisis de indicadores comerciales y logísticos.
+
