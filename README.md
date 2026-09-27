@@ -99,52 +99,44 @@ El diseño priorizó:
 
 ### Normalización y tipado
 
-Se realizaron transformaciones para adaptar los datos originales al modelo analítico.
+Se realizaron transformaciones para adaptar los datos originales al modelo analítico y garantizar un formato consistente para su posterior análisis.
 
-Entre ellas:
+Entre los principales tratamientos se incluyeron:
 
-```sql
-::timestamp
-```
-
-para la conversión de campos temporales y funciones basadas en `epoch` para resolver registros cuyo formato original no podía utilizarse directamente.
-
-También se utilizó:
-
-```sql
-NULLIF()
-```
-
-para tratar valores vacíos o nulos que podían afectar las agregaciones.
-
-Las categorías de productos fueron además traducidas al español para facilitar la interpretación de los dashboards.
+* Conversión y tipado de campos temporales.
+* Tratamiento de valores vacíos y nulos mediante `NULLIF()`.
+* Conversión de registros temporales cuyo formato original no podía utilizarse directamente.
+* Traducción de las categorías de productos al español para facilitar la interpretación de los análisis.
 
 ### Control de duplicados
 
-Uno de los problemas encontrados durante la combinación de tablas fue la generación de duplicados al relacionar compradores, vendedores y transacciones.
+Durante la combinación de distintas entidades se detectó que determinados joins podían multiplicar registros y alterar las métricas calculadas.
 
-Para evitar que estos duplicados alteraran los resultados de ventas y otras métricas, se utilizaron:
+Para evitar este problema se utilizaron:
 
-* Vistas intermedias.
-* Consultas separadas por entidad.
-* `DISTINCT` cuando era necesario.
-* Agregaciones realizadas antes de determinados joins.
+* Vistas intermedias para separar las distintas etapas del procesamiento.
+* Consultas independientes por entidad antes de realizar determinadas combinaciones.
+* `DISTINCT` en los casos en que era necesario controlar registros repetidos.
+* Agregaciones previas a determinados joins para preservar la granularidad de los datos.
 
-El objetivo fue mantener consistencia en los volúmenes y métricas calculadas.
+Esto permitió mantener la consistencia de los volúmenes y evitar distorsiones en métricas como ventas, pedidos y costos de flete.
 
 ### Tratamiento de anomalías temporales
 
 Se identificaron picos excepcionales de transacciones asociados a **Black Friday y Cyber Monday en noviembre de 2017**.
 
-Estos eventos fueron tratados por separado para evitar que su comportamiento excepcional dominara determinados análisis temporales y dificultara la interpretación de la tendencia general.
+Estos eventos se analizaron de forma diferenciada en los análisis temporales en los que podían distorsionar la tendencia general, permitiendo distinguir el comportamiento habitual de los períodos de demanda excepcional.
 
 ### Preparación de vistas
 
-Parte de las transformaciones se realizaron directamente en PostgreSQL mediante vistas.
+Las principales transformaciones y agregaciones se organizaron mediante vistas en PostgreSQL.
 
-Esto permitió que Power BI recibiera datos previamente estructurados y redujo la necesidad de realizar transformaciones complejas directamente en el frontend.
+Estas vistas permitieron:
 
----
+* Estructurar los datos según las necesidades de cada análisis.
+* Mantener una granularidad consistente antes de su visualización.
+* Centralizar parte de la lógica de transformación en PostgreSQL.
+* Proporcionar a Power BI datasets preparados para el análisis y la visualización.
 
 ## 📍 Análisis Geoespacial con PostGIS
 
