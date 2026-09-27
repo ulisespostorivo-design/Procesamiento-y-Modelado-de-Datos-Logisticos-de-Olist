@@ -59,24 +59,24 @@ El objetivo fue analizar el desempeño logístico de la plataforma y explorar su
 
 El proyecto se estructuró en tres etapas principales:
 
-### 1. Ingesta y preparación — PostgreSQL / SQL
+### 1. Ingesta y preparación — PostgreSQL
 
-Los datos originales fueron cargados en PostgreSQL y posteriormente transformados mediante consultas SQL.
+Los datos originales fueron cargados en PostgreSQL y transformados mediante consultas SQL.
 
 Entre los principales tratamientos realizados:
 
 * Conversión y tipado de campos temporales.
 * Tratamiento de valores vacíos y nulos mediante `NULLIF`.
-* Eliminación y control de registros duplicados.
+* Detección y tratamiento de registros duplicados.
 * Traducción de categorías de productos al español.
-* Creación de vistas para separar las diferentes etapas del procesamiento.
+* Creación de vistas para organizar las distintas etapas del procesamiento.
 * Preparación de datasets específicos para el análisis en Power BI.
 
 ### 2. Análisis geoespacial — PostGIS
 
 Se incorporó **PostGIS** para trabajar con las coordenadas geográficas de compradores y vendedores.
 
-Esto permitió calcular distancias entre ambos puntos y utilizarlas posteriormente para analizar:
+Esto permitió calcular distancias entre ambos puntos y utilizarlas para analizar:
 
 * Distancia de los envíos.
 * Costos de flete.
@@ -90,13 +90,11 @@ Las vistas preparadas en PostgreSQL fueron utilizadas como fuente para los dashb
 El diseño priorizó:
 
 * Lectura rápida de los principales indicadores.
-* Jerarquía visual.
-* Reducción de elementos innecesarios.
+* Jerarquía visual y reducción de elementos innecesarios.
 * Ordenamiento de categorías y regiones según volumen.
 * Uso de escalas logarítmicas cuando las diferencias de magnitud dificultaban la comparación.
-* Coloración condicionada para facilitar la interpretación de determinadas métricas.
+* Uso de formato condicional para facilitar la interpretación de determinadas métricas.
 
----
 ## ⚙️ Procesamiento y Modelado de Datos
 
 ### Normalización y tipado
