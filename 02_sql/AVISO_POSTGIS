@@ -3,6 +3,6 @@
 El archivo SQL principal requiere que la extension PostGIS este instalada y habilitada en la base de datos de destino para poder funcionar correctamente.
 
 Ejecute la siguiente sentencia antes de importar el codigo:
-```sql
+
 CREATE EXTENSION postgis
-```
+
